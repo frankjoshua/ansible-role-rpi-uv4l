@@ -1,0 +1,28 @@
+---
+
+- name: Add uv4l apt key
+  apt_key:
+    url: "{{ uv4l_key_url }}"
+    state: present
+  become: yes
+
+- name: Add uv4l repo
+  apt_repository:
+    repo: "{{ uv4l_repo }}"
+    state: present
+  become: yes
+
+- name: Install uv4l
+  apt:
+    pkg:
+    - uv4l
+    - uv4l-raspicam
+    - uv4l-server
+    - uv4l-uvc
+    - uv4l-xscreen
+    - uv4l-mjpegstream
+    - uv4l-dummy
+    - uv4l-raspidisp
+    - uv4l-webrtc
+    - uv4l-demos
+  become: yes
